@@ -1,10 +1,10 @@
 
-const Home = () => {
+const FaQ = () => {
     return (
         <div>
-        
+            
         </div>
     );
 };
 
-export default Home;
+export default FaQ;
