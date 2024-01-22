@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 border">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -22,8 +22,8 @@ const Navbar = () => {
                 </div>
 
                 <div className="flex navbar-start">
-                    <Link className="flex md:w-4/6 lg:w-2/3 items-center btn btn-ghost text-xl">
-                        <img className=" w-3/6 lg:w-2/6" src="/logo.png" alt="co study logo" /><span>CoStudy</span></Link>
+                    <Link className="flex items-center btn btn-ghost text-xl">
+                        <img className=" h-[40px]" src="/logo.png" alt="CoStudy" /><span>CoStudy</span></Link>
                 </div>
 
             </div>
