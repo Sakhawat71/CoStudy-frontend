@@ -9,7 +9,7 @@ const Navbar = () => {
                 className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-blue-600" : "text-black"
                 }
-            >Log in</NavLink>
+            >Home</NavLink>
         </li>
         <li>
             <NavLink
@@ -19,14 +19,14 @@ const Navbar = () => {
                 }
             >Assignments</NavLink>
         </li>
-        <li>
+        {/* <li>
             <NavLink
                 to={"/assignmnets"}
                 className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-blue-600" : "text-black"
                 }
             >profile</NavLink>
-        </li>
+        </li> */}
     </>
 
     return (
