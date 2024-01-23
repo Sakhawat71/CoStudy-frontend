@@ -7,7 +7,7 @@ const Navbar = () => {
             <NavLink
                 to={"/"}
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-blue-600" : "text-black"
+                    isPending ? "pending" : isActive ? "text-[#44b584]" : "text-black"
                 }
             >Home</NavLink>
         </li>
@@ -15,22 +15,15 @@ const Navbar = () => {
             <NavLink
                 to={"/assignmnets"}
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-blue-600" : "text-black"
+                    isPending ? "pending" : isActive ? "text-[#44b584]" : "text-black"
                 }
             >Assignments</NavLink>
         </li>
-        {/* <li>
-            <NavLink
-                to={"/assignmnets"}
-                className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-blue-600" : "text-black"
-                }
-            >profile</NavLink>
-        </li> */}
+        
     </>
 
     return (
-        <div className="navbar bg-base-100 border px-10">
+        <div className="navbar bg-base-100 shadow-md px-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -50,14 +43,14 @@ const Navbar = () => {
 
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className=" text-xl space-x-3 font-bold menu-horizontal px-1">
+                <ul className=" text-lg space-x-3 font-semibold menu-horizontal px-1">
                     {
                         navlink
                     }
                 </ul>
             </div>
             <div className="navbar-end">
-                <NavLink to={"/login"} className={"btn"}>Login</NavLink>
+                <NavLink to={"/login"} className={"btn btn-outline hover:bg-white hover:text-[#44b584] text-base"}>Login</NavLink>
             </div>
         </div>
     );
