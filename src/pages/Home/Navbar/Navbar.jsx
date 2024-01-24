@@ -23,6 +23,36 @@ const Navbar = () => {
                 }
             >Assignments</NavLink>
         </li>
+        {
+            user &&
+            <>
+                <li>
+                    <NavLink
+                        to={"/create-assignment"}
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "text-[#44b584]" : "text-black"
+                        }
+                    >Create Assignment</NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to={"/my-assignments"}
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "text-[#44b584]" : "text-black"
+                        }
+                    >My Assignments</NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to={"/submitted-assignments"}
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "text-[#44b584]" : "text-black"
+                        }
+                    >Submitted Assignments</NavLink>
+                </li>
+
+            </>
+        }
     </>
 
     // log out
