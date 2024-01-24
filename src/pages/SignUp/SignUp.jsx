@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const SignUp = () => {
 
+    const {emailPasswordSignUp,googleSignIn,user} = useContext(AuthContext);
     const [showPassword,setShowPassword] = useState(false);
 
     const handelRegister = e =>{
@@ -18,18 +20,34 @@ const SignUp = () => {
         
         console.log({name,photo,email,password})
 
+        emailPasswordSignUp(email,password)
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error => {
+            console.log(error.code,error.message)
+        })
     }
 
+    const signInWithGoogle = () =>{
+        googleSignIn()
+        .then(result =>{
+            console.log(result.user)
+        })
+        .catch(error => {
+            console.log(error.code, error.message)
+        })
+    }
 
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col ">
                 <div className="text-center ">
-                    <h1 className="text-5xl font-bold">Register now!</h1>
+                    <h1 className="text-5xl font-bold">Register now! {user?.email}</h1>
                 </div>
 
                 <div className="text-center p-2 mb-2 mx-auto card shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
-                    <Link onClick={''} className="btn">Continue with Google <FaGoogle className="text-blue-700" /></Link>
+                    <Link onClick={signInWithGoogle} className="btn">Continue with Google <FaGoogle className="text-blue-700" /></Link>
                 </div>
                 <div className="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
 
