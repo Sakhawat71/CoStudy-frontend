@@ -38,11 +38,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/create-assignment",
-                element: <CreateAssignment></CreateAssignment>
+                element: <PrivetRouter><CreateAssignment></CreateAssignment></PrivetRouter>
             },
             {
                 path: "/submitted-assignments",
-                element: <SubmittedAssignments></SubmittedAssignments>
+                element: <PrivetRouter><SubmittedAssignments></SubmittedAssignments></PrivetRouter>
             }
         ]
     }
