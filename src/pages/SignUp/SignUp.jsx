@@ -6,6 +6,20 @@ const SignUp = () => {
 
     const [showPassword,setShowPassword] = useState(false);
 
+    const handelRegister = e =>{
+        
+        e.preventDefault();
+        const form = e.target;
+
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        
+        console.log({name,photo,email,password})
+
+    }
+
 
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -19,7 +33,7 @@ const SignUp = () => {
                 </div>
                 <div className="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
 
-                    <form onSubmit={''} className="card-body lg:w-[450px]">
+                    <form onSubmit={handelRegister} className="card-body lg:w-[450px]">
 
                         <div className="form-control">
                             <label className="label">

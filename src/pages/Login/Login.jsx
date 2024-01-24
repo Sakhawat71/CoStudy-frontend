@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import auth from "../../firebase/firebase.config";
 
 
 const Login = () => {
 
+    console.log(auth)
     // const location = useLocation()
     // const navigate = useNavigate()
 
@@ -40,6 +42,15 @@ const Login = () => {
     //             return error.message;
     //     }
     // };
+    
+    const handelLogin = e =>{
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log({email,password})
+    }
+
 
     return (
 
@@ -53,7 +64,7 @@ const Login = () => {
 
 
                 <div className="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
-                    <form onSubmit={''} className="card-body  lg:w-[400px]">
+                    <form onSubmit={handelLogin} className="card-body  lg:w-[400px]">
 
                         <div className="form-control">
                             <label className="label">
