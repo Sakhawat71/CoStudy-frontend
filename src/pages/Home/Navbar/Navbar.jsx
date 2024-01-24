@@ -13,7 +13,7 @@ const Navbar = () => {
         </li>
         <li>
             <NavLink
-                to={"/assignmnets"}
+                to={"/assignments"}
                 className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-[#44b584]" : "text-black"
                 }

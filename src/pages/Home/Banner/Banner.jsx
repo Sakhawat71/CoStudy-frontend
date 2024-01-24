@@ -8,7 +8,7 @@ const Banner = () => {
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold text-[#41d293]">CoStudy</h1>
                     <p className="mb-5 text-xl text-[#7bbdf7]"> Learn Together,<br /> Succeed Together </p>
-                    <Link to={"/assignments"}><button className="btn btn-ghost hover:text-[#7bbdf7] text-[#44b584] text-xl">Join the Community!</button></Link>
+                    <Link to={"/login"}><button className="btn btn-ghost hover:text-[#7bbdf7] text-[#44b584] text-xl">Join the Community!</button></Link>
                 </div>
             </div>
         </div>
