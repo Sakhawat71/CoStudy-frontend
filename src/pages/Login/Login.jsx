@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import auth from "../../firebase/firebase.config";
 
 
 const Login = () => {
 
-    console.log(auth)
+
     // const location = useLocation()
     // const navigate = useNavigate()
 
