@@ -4,9 +4,8 @@ import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
 
-    const { user , logout} = useContext(AuthContext);
+    const { user, logout, loading } = useContext(AuthContext);
     console.log(user)
-
     const navlink = <>
         <li>
             <NavLink
@@ -26,10 +25,17 @@ const Navbar = () => {
         </li>
     </>
 
+    // log out
     const logOut = () => {
         logout()
-        .then()
-        .catch()
+            .then(result => {
+                if (result) {
+                    console.log('user loggout')
+                }
+            })
+            .catch(error => {
+                console.log('logout problem: ', error.message);
+            })
     }
 
     return (
@@ -59,13 +65,28 @@ const Navbar = () => {
                     }
                 </ul>
             </div>
-            <div className="navbar-end">
-                {
-                    user?.email ?
-                        <Link onClick={logOut} className="btn btn-outline hover:bg-white hover:text-[#44b584] text-base">Logout</Link>
-                        :
-                        <Link to={"/login"} className={"btn btn-outline hover:bg-white hover:text-[#44b584] text-base"}>login</Link>
-                }
+            <div className="navbar-end gap-3">
+                <div className="avatar">
+                    <div className=" w-10 rounded-xl">
+                        {
+
+                            loading ? <span className="loading loading-spinner loading-lg"></span>
+                                :
+                                <img title={user?.displayName} src={user ? user.photoURL : 'https://i.ibb.co/4K27t1f/user.png'} alt="user avatar" />
+
+                        }
+
+                    </div>
+                </div>
+
+                <div>
+                    {
+                        user?.email ?
+                            <Link onClick={logOut} className="btn btn-outline hover:bg-white hover:text-[#44b584] text-base">Logout</Link>
+                            :
+                            <Link to={"/login"} className={"btn btn-outline hover:bg-white hover:text-[#44b584] text-base"}>login</Link>
+                    }
+                </div>
             </div>
         </div>
     );

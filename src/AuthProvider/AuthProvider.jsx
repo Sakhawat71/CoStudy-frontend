@@ -46,7 +46,7 @@ const AuthProvider = ({ children }) => {
     }
 
 
-
+    // provide all function
     const authInfo = {
         emailPasswordSignUp,
         googleSignIn,
@@ -54,6 +54,7 @@ const AuthProvider = ({ children }) => {
         logout,
         user,
         loading,
+        setLoading
     };
 
     return (

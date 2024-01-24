@@ -1,15 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import {  updateProfile } from "firebase/auth";
 
 const SignUp = () => {
 
-    const {emailPasswordSignUp,googleSignIn,user} = useContext(AuthContext);
-    const [showPassword,setShowPassword] = useState(false);
+    const { emailPasswordSignUp, googleSignIn } = useContext(AuthContext);
+    const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate()
 
-    const handelRegister = e =>{
-        
+    const handelRegister = e => {
+
         e.preventDefault();
         const form = e.target;
 
@@ -17,33 +19,50 @@ const SignUp = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        
-        console.log({name,photo,email,password})
 
-        emailPasswordSignUp(email,password)
-        .then(result => {
-            console.log(result.user)
-        })
-        .catch(error => {
-            console.log(error.code,error.message)
-        })
+        console.log({ name, photo, email, password })
+
+        // sign up with email password
+        emailPasswordSignUp(email, password)
+            .then(result => {
+
+                const currentUser = result.user;
+                
+                updateProfile(currentUser, {
+                    displayName: name,
+                    photoURL: photo,
+                })
+                .then(()=>{
+                    navigate('/')
+                })
+                .catch(error => {
+                    console.log("profile update porblem")
+                    console.log(error)
+                })
+            })
+            .catch(error => {
+                console.log(error.code, error.message)
+            })
     }
 
-    const signInWithGoogle = () =>{
+    const signInWithGoogle = () => {
         googleSignIn()
-        .then(result =>{
-            console.log(result.user)
-        })
-        .catch(error => {
-            console.log(error.code, error.message)
-        })
+            .then(result => {
+                if (result) {
+                    console.log('user login with google')
+                    navigate('/')
+                }
+            })
+            .catch(error => {
+                console.log(error.code, error.message)
+            })
     }
 
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col ">
                 <div className="text-center ">
-                    <h1 className="text-5xl font-bold">Register now! {user?.email}</h1>
+                    <h1 className="text-5xl font-bold">Register now!</h1>
                 </div>
 
                 <div className="text-center p-2 mb-2 mx-auto card shrink-0 w-full max-w-lg shadow-2xl bg-base-100">

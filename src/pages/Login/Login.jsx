@@ -1,53 +1,35 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const Login = () => {
 
-
-    // const location = useLocation()
-    // const navigate = useNavigate()
-
+    const { loginEmailPass } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
+    const location = useLocation()
+    const navigate = useNavigate()
+
     // const [firebaseError, setFirebaseError] = useState([]);
 
-    // const handelLogIn = e => {
-    //     e.preventDefault();
-    //     const form = e.target;
-    //     const email = form.email.value;
-    //     const password = form.password.value;
-    //     console.log(email, password)
-
-
-    //     loginEmailPass(email, password)
-    //         .then(() => {
-    //             // const user = result.user;
-    //             navigate(location?.state ? location.state : "/")
-    //             // console.log(user)
-    //         })
-    //         .catch(error => {
-    //             // console.log(error.message)
-    //             setFirebaseError(getCustomErrorMessage(error))
-    //         })
-
-    //     form.reset();
-    // }
-    // const getCustomErrorMessage = (error) => {
-    //     switch (error.message) {
-    //         case "auth/invalid-login-credentials":
-    //             return "Incorrect email/password.Please try again.";
-    //         default:
-    //             return error.message;
-    //     }
-    // };
     
-    const handelLogin = e =>{
+    const handelLogin = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log({email,password})
+        console.log({ email, password })
+
+        loginEmailPass(email, password)
+            .then(() => {
+                console.log('loggin sussessfully')
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+
     }
 
 
