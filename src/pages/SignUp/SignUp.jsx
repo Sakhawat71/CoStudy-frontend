@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import {  updateProfile } from "firebase/auth";
+import { FcGoogle } from "react-icons/fc";
 
 const SignUp = () => {
 
@@ -66,7 +67,7 @@ const SignUp = () => {
                 </div>
 
                 <div className="text-center p-2 mb-2 mx-auto card shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
-                    <Link onClick={signInWithGoogle} className="btn">Continue with Google <FaGoogle className="text-blue-700" /></Link>
+                    <Link onClick={signInWithGoogle} className="btn">Continue with Google <FcGoogle className="text-2xl" /></Link>
                 </div>
                 <div className="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
 
