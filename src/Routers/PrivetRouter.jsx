@@ -9,7 +9,7 @@ const PrivetRouter = ({ children }) => {
     
 
     if (loading) {
-        return <span className="loading loading-spinner loading-lg"></span>
+        return <span className="flex justify-center mx-auto items-center loading loading-spinner loading-lg my-5"></span>
     }
 
     if(user){
