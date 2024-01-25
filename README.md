@@ -5,7 +5,7 @@ live link : https://online-group-study-71.web.app/
 
 ## Overview
 
-CoStudy is a web application that facilitates collaborative learning by allowing users to create, update, and view assignments. The platform supports user authentication through email-password and Google login. The project utilizes React.js for the client-side, Express.js for the backend, and MongoDB as the database. The application is deployed on Vercel, providing a seamless and responsive user experience.
+CoStudy is a web application that facilitates collaborative learning by allowing users to create, update, and view assignments. The platform supports user authentication through email-password and Google login. The project utilizes React.js for the client-side, Express.js for the backend, and MongoDB as the database. The application is deployed on Firebase and Vercel, providing a seamless and responsive user experience.
 
 ## Features
 
