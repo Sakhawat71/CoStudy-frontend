@@ -9,6 +9,7 @@ import MyAssignments from "../pages/MyAssignments/MyAssignments";
 import CreateAssignment from "../pages/CreateAssignment/CreateAssignment";
 import SubmittedAssignments from "../pages/SubmittedAssignments/SubmittedAssignments";
 import PrivetRouter from "./PrivetRouter";
+import UpdateAssignment from "../pages/UpdateAssignment/UpdateAssignment";
 
 const router = createBrowserRouter([
     {
@@ -30,7 +31,8 @@ const router = createBrowserRouter([
             },
             {
                 path: "/assignments",
-                element: <Assignments></Assignments>
+                element: <Assignments></Assignments>,
+                loader: ()=> fetch('http://localhost:5000/assignments')
             },
             {
                 path: "/my-assignments",
@@ -43,6 +45,10 @@ const router = createBrowserRouter([
             {
                 path: "/submitted-assignments",
                 element: <PrivetRouter><SubmittedAssignments></SubmittedAssignments></PrivetRouter>
+            },
+            {
+                path: "/update-assignment",
+                element: <PrivetRouter><UpdateAssignment></UpdateAssignment></PrivetRouter>
             }
         ]
     }

@@ -4,7 +4,7 @@ const FaQ = () => {
         <div className="my-10">
 
             <div className="mx-auto lg:w-1/2 text-center">
-                <h2 className="text-4xl font-bold text-[#44b584]">FaQ</h2>
+                <h2 className="text-4xl font-bold text-[#44b584]">Frequently Asked Questions</h2>
                 <p>Explore common questions about our online group study platform.</p>
             </div>
 

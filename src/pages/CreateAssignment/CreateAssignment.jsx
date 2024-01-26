@@ -1,10 +1,15 @@
+import axios from "axios";
+import { useContext } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const CreateAssignment = () => {
 
+    const { user } = useContext(AuthContext);
+    // console.log(user)
 
 
-
-    const handelCreateAssignment = e =>{
+    const handelCreateAssignment = e => {
         e.preventDefault();
         const from = e.target;
 
@@ -12,9 +17,36 @@ const CreateAssignment = () => {
         const difficulty = from.difficulty.value;
         const date = from.date.value;
         const marks = from.marks.value;
-        const image = from.image.value;
+        const thumbnail = from.image.value;
         const description = from.description.value;
-        console.log({title,difficulty,date,marks,image,description})
+        const creatorEmail = user?.email;
+        // console.log({ title, difficulty, date, marks, thumbnail, description })
+        const newAssignments = { title, difficulty, date, marks, thumbnail, description, creatorEmail };
+
+        axios.post('http://localhost:5000/assignments', newAssignments)
+            .then(date => {
+                if (date.data.insertedId) {
+                    // alert('assignment added')
+                    Swal.fire({
+                        position: "top",
+                        icon: "success",
+                        title: "Assignment Created Successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+
+        // fetch('http://localhost:5000/assignments', {
+        //     method: 'POST',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body : JSON.stringify(newAssignments)
+        // })
+        // .then(res => res.json())
+        // .then(date => console.log(date))
+
     }
 
 
@@ -78,7 +110,7 @@ const CreateAssignment = () => {
                             <input type="text" name="image" placeholder="Image url" className="input input-bordered w-full" />
                         </label>
                     </div>
-                    
+
                 </div>
 
 
