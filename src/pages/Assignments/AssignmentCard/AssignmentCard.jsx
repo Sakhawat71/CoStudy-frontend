@@ -1,10 +1,17 @@
 import PropTypes from 'prop-types';
+// import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+// import { AuthContext } from '../../../AuthProvider/AuthProvider';
+// import Swal from 'sweetalert2';
+// import axios from 'axios';
 
-const AssignmentCard = ({ assignment }) => {
+const AssignmentCard = ({ assignment ,handelDeleteAssignment}) => {
 
-    const { title, difficulty, date, thumbnail } = assignment;
+    // const { user } = useContext(AuthContext);
+    const { title, difficulty, date, thumbnail, _id, creatorEmail } = assignment;
     // console.log(assignment)
+
+   
 
     return (
         <div className="card card-compact bg-base-100 shadow-xl my-5 md:my-0">
@@ -25,9 +32,9 @@ const AssignmentCard = ({ assignment }) => {
                 <div className="card-actions flex justify-between">
                     <Link className="btn bg-[#37A872] text-white hover:bg-[#47BE96]">View</Link>
 
-                    <Link to="/update-assignment" className="btn bg-[#65A4DA] hover:bg-[#7EBBF2] text-white">Update</Link>
+                    <Link to={`/update-assignment/${_id}`} className="btn bg-[#65A4DA] hover:bg-[#7EBBF2] text-white">Update</Link>
 
-                    <Link className="btn bg-red-600 hover:bg-[#CB236E] text-white">Delete</Link>
+                    <Link onClick={() => handelDeleteAssignment(_id,creatorEmail)} className="btn bg-red-600 hover:bg-[#CB236E] text-white">Delete</Link>
                 </div>
             </div>
         </div>
@@ -36,6 +43,7 @@ const AssignmentCard = ({ assignment }) => {
 
 AssignmentCard.propTypes = {
     assignment: PropTypes.object,
+    handelDeleteAssignment : PropTypes.func,
 };
 
 export default AssignmentCard;

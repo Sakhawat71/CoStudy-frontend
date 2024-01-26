@@ -24,8 +24,8 @@ const UpdateAssignment = () => {
 
             <form onSubmit={handelUpdateAssignment} className="bg-[#F4F3F0] px-10 md:px-28 py-10">
                 <div className="text-center my-5 space-y-3">
-                    <h2 className="font-bold text-2xl">Create an Assignment</h2>
-                    <p>Create Assignment with caution. If there is any mistake in Create an Assignment, go to Update Assignment and update the Assignment with the correct information.</p>
+                    <h2 className="font-bold text-2xl">Update Assignment</h2>
+                    <p>Update Assignment with caution. Update the Assignment with the correct information.</p>
                 </div>
 
                 <div className="md:flex justify-center items-center gap-10">
@@ -94,7 +94,7 @@ const UpdateAssignment = () => {
 
                 <input
                     type="submit"
-                    value="Create Assignment"
+                    value="Update Assignment"
                     className="btn bg-[#47BE96] hover:bg-[#47BE96] text-white text-xl mt-10 btn-block"
                 />
             </form>
