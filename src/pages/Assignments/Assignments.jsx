@@ -13,7 +13,7 @@ const Assignments = () => {
     // console.log(assignments)
 
     const handelDeleteAssignment = (id,creatorEmail) => {
-        console.log(id,creatorEmail)
+        // console.log(id,creatorEmail)
         if (user.email !== creatorEmail) {
             return (
                 Swal.fire({
