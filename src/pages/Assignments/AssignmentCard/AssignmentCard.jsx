@@ -1,22 +1,22 @@
 import PropTypes from 'prop-types';
-// import { useContext } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-// import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 // import Swal from 'sweetalert2';
 // import axios from 'axios';
 
-const AssignmentCard = ({ assignment ,handelDeleteAssignment}) => {
+const AssignmentCard = ({ assignment, handelDeleteAssignment }) => {
 
-    // const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const { title, difficulty, date, thumbnail, _id, creatorEmail } = assignment;
     // console.log(assignment)
 
-   
+
 
     return (
         <div className="card card-compact bg-base-100 shadow-xl my-5 md:my-0">
 
-            <figure className='lg:h-64'>
+            <figure className='lg:h-64 md:h-52 h-52'>
                 <img className='h-full w-full' src={assignment?.thumbnail && thumbnail} alt="assignment thumbnail" />
             </figure>
 
@@ -30,11 +30,14 @@ const AssignmentCard = ({ assignment ,handelDeleteAssignment}) => {
 
                 </div>
                 <div className="card-actions flex justify-between">
-                    <Link className="btn bg-[#37A872] text-white hover:bg-[#47BE96]">View</Link>
+                    <Link to={`/assignment-details/${_id}`} className="btn bg-[#37A872] text-white hover:bg-[#47BE96]">View</Link>
 
                     <Link to={`/update-assignment/${_id}`} className="btn bg-[#65A4DA] hover:bg-[#7EBBF2] text-white">Update</Link>
 
-                    <Link onClick={() => handelDeleteAssignment(_id,creatorEmail)} className="btn bg-red-600 hover:bg-[#CB236E] text-white">Delete</Link>
+                    {
+                        user?.email &&
+                        <Link onClick={() => handelDeleteAssignment(_id, creatorEmail)} className="btn bg-red-600 hover:bg-[#CB236E] text-white">Delete</Link>
+                    }
                 </div>
             </div>
         </div>
@@ -43,7 +46,7 @@ const AssignmentCard = ({ assignment ,handelDeleteAssignment}) => {
 
 AssignmentCard.propTypes = {
     assignment: PropTypes.object,
-    handelDeleteAssignment : PropTypes.func,
+    handelDeleteAssignment: PropTypes.func,
 };
 
 export default AssignmentCard;
