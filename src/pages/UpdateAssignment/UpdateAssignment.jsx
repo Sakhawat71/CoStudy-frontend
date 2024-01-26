@@ -1,11 +1,12 @@
 import axios from "axios";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateAssignment = () => {
 
+    const navigate = useNavigate();
     const assignment = useLoaderData();
-    console.log(assignment)
-    const {_id, title, difficulty, date, marks, thumbnail, description, creatorEmail} = assignment;
+    const { _id, title, difficulty, date, marks, thumbnail, description, } = assignment;
 
     const handelUpdateAssignment = e => {
         e.preventDefault();
@@ -17,10 +18,23 @@ const UpdateAssignment = () => {
         const updatedMarks = from.marks.value;
         const updatedImage = from.image.value;
         const updatedDescription = from.description.value;
-        
-        const updatedAssignment =  { updatedTitle, updatedDifficulty, updatedDate, updatedMarks, updatedImage, updatedDescription };
 
-        axios.put()
+        const updatedAssignment = { updatedTitle, updatedDifficulty, updatedDate, updatedMarks, updatedImage, updatedDescription };
+
+        axios.put(`http://localhost:5000/assignments/${_id}`, updatedAssignment)
+            .then(res => {
+                // console.log(res.data.modifiedCount)
+                if (res.data.modifiedCount === 1) {
+                    Swal.fire({
+                        position: "top",
+                        icon: "success",
+                        title: "Assignment Updated",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate('/assignments')
+                }
+            })
 
     }
 
@@ -28,7 +42,7 @@ const UpdateAssignment = () => {
     return (
         <div className="mx-auto max-w-6xl my-5 min-h-screen mb-20">
 
-            <form onSubmit={() => handelUpdateAssignment(_id)} className="bg-[#F4F3F0] px-10 md:px-28 py-10">
+            <form onSubmit={handelUpdateAssignment} className="bg-[#F4F3F0] px-10 md:px-28 py-10">
                 <div className="text-center my-5 space-y-3">
                     <h2 className="font-bold text-2xl">Update Assignment</h2>
                     <p>Update Assignment with caution. Update the Assignment with the correct information.</p>
