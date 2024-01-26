@@ -25,7 +25,7 @@ const ViewAssignment = () => {
                         <h3>Difficulty: <span className="font-bold text-xl text-gray-900">{difficulty}</span></h3>
                         <h3>Due Date: <span className="text-xl font-bold text-gray-900">{date}</span></h3>
                         <h3>Marks: <span className="text-xl font-bold text-gray-900">{marks}</span></h3>
-
+                        <button className="btn btn-outline hover:bg-white">Take Assignment</button>
                     </div>
                     <div className="mt-5">
                         <h3 className="text-xl font-semibold mb-2">Description: </h3>

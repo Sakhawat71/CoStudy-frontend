@@ -36,17 +36,7 @@ const CreateAssignment = () => {
                     });
                 }
             })
-
-        // fetch('http://localhost:5000/assignments', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body : JSON.stringify(newAssignments)
-        // })
-        // .then(res => res.json())
-        // .then(date => console.log(date))
-
+            from.reset()
     }
 
 
