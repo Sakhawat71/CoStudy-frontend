@@ -37,7 +37,7 @@ const Assignments = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.delete(`https://online-group-study-server-gold.vercel.app/assignments/${id}`)
+                axios.delete(`http://localhost:5000/assignments/${id}`)
                     .then(res => {
                         // console.log(res.data)
                         if (res.data.deletedCount === 1) {

@@ -23,7 +23,7 @@ const CreateAssignment = () => {
         // console.log({ title, difficulty, date, marks, thumbnail, description })
         const newAssignments = { title, difficulty, date, marks, thumbnail, description, creatorEmail };
 
-        axios.post('https://online-group-study-server-gold.vercel.app/assignments', newAssignments)
+        axios.post('http://localhost:5000/assignments', newAssignments)
             .then(date => {
                 if (date.data.insertedId) {
                     // alert('assignment added')
