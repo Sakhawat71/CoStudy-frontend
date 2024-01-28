@@ -37,7 +37,8 @@ const router = createBrowserRouter([
             },
             {
                 path: "/my-assignments",
-                element: <PrivetRouter><MyAssignments></MyAssignments></PrivetRouter>
+                element: <PrivetRouter><MyAssignments></MyAssignments></PrivetRouter>,
+                loader: ()=> fetch(`http://localhost:5000/api/v1/my-assignment`)
             },
             {
                 path: "/create-assignment",
