@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const SubmittedCard = ({ submitted }) => {
+const SubmittedCard = ({ submitted, handelGiveMark }) => {
 
     const { user,
         submittedPdfLink,
@@ -8,13 +8,16 @@ const SubmittedCard = ({ submitted }) => {
         status,
         title,
         thumbnail,
-        marks
+        marks,
+        _id
     } = submitted;
+
+
 
     return (
 
 
-        <div className='bg-[#FFFFFF] min-h-40 rounded-2xl mx-1 md:mx-5 lg:mx-10 my-5 lg:my-10 flex gap-5 lg:gap-10 flex-col md:flex-row'>
+        <div className='bg-[#FFFFFF] min-h-40 rounded-2xl mx-1 md:mx-5 lg:mx-10 my-5 lg:my-10 flex gap-5 lg:gap-10 flex-col md:flex-row md:items-center lg:items-stretch'>
 
             <figure className='mx-auto max-w-56 max-h-40 flex justify-center items-center p-2 rounded-2xl'>
                 <img className='w-full h-full rounded-2xl mx-auto' src={thumbnail} alt="submitted assignment" />
@@ -37,7 +40,11 @@ const SubmittedCard = ({ submitted }) => {
 
                     <h2>Assignment Mark: <span className='font-bold'>{marks ? marks : 'undifind'}</span></h2>
 
-                    <button className='btn btn-outline text-[#1C84C1] hover:bg-white hover:text-[#37A872]'>{status === 'pending' && 'Give Mark'}</button>
+                    {
+                        status === 'pending' ? <button onClick={() => handelGiveMark(_id, status, submittedPdfLink)} className='btn btn-outline text-[#1C84C1] hover:bg-white hover:text-[#37A872]'>{status === 'pending' && 'Give Mark'}</button>
+                            :
+                            <button className='btn btn-disabled'> Completed </button>
+                    }
                 </div>
 
             </div>
@@ -48,7 +55,8 @@ const SubmittedCard = ({ submitted }) => {
 };
 
 SubmittedCard.propTypes = {
-    submitted: PropTypes.object
+    submitted: PropTypes.object,
+    handelGiveMark: PropTypes.func
 };
 
 export default SubmittedCard;
