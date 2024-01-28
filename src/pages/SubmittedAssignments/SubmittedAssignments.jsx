@@ -57,7 +57,7 @@ const SubmittedAssignments = () => {
                 givenMark,
                 feedback
             }
-            axios.put(`http://localhost:5000/api/v1/mark-assignment/${id}`, update)
+            axios.put(`https://online-group-study-server-gold.vercel.app/api/v1/mark-assignment/${id}`, update)
                 .then(res => {
                     if (res.data.modifiedCount) {
                         console.log(res.data)

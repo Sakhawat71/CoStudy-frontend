@@ -65,7 +65,7 @@ const ViewAssignment = () => {
                 originalId : _id,
                 marks
             }
-            axios.post('http://localhost:5000/api/v1/submitted-assignment',submitted)
+            axios.post('https://online-group-study-server-gold.vercel.app/api/v1/submitted-assignment',submitted)
             .then(res => {
                 if(res.data.insertedId){
                     // console.log(res.data.insertedId)
