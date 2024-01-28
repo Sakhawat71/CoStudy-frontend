@@ -7,7 +7,7 @@ const MyAssgCard = ({ assg }) => {
     const { title, givenMark, examineerFeedback, status, marks } = assg;
 
     return (
-        <tr>
+        <tr className=''>
             <td>
                 <div className="flex items-center">
                     <h2 className="font-bold text-lg text-gray-700">{title}</h2>
@@ -15,7 +15,7 @@ const MyAssgCard = ({ assg }) => {
             </td>
 
             <td>
-                <h3 className='font-bold text-center'>{givenMark}</h3>
+                <h3 className='font-bold text-center text-green-500'>{givenMark}</h3>
             </td>
 
             <td>
@@ -23,15 +23,15 @@ const MyAssgCard = ({ assg }) => {
             </td>
 
             <td>
-                <p className="text-sm opacity-50 text-center">{examineerFeedback ? examineerFeedback : '"'}</p>
+                <p className="text-sm opacity-50 text-center">{examineerFeedback ? examineerFeedback : '"_"'}</p>
             </td>
 
             <td>
                 {
                     status === 'completed' ?
-                        <span className='text-center flex items-center text-green-700'> <ImCheckmark className='font-extrabold text-base mr-2'></ImCheckmark> {status}</span>
+                        <span className='text-center font-semibold flex items-center text-green-500'> <ImCheckmark className='font-extrabold text-base mr-2'></ImCheckmark> {status}</span>
                         :
-                        <span className='text-center flex items-center'><FaHourglassEnd className='font-extrabold text-base mr-2'></FaHourglassEnd> {status}</span>
+                        <span className='text-center flex items-center text-yellow-700'><FaHourglassEnd className='font-extrabold text-base mr-2'></FaHourglassEnd> {status}</span>
                 }
             </td>
 
