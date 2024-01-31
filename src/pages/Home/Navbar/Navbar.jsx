@@ -111,7 +111,7 @@ const Navbar = () => {
 
                 <div>
                     {
-                        user?.email ?
+                        user ?
                             <Link onClick={logOut} className="btn btn-outline hover:bg-white hover:text-[#44b584] text-base">Logout</Link>
                             :
                             <Link to={"/login"} className={"btn btn-outline hover:bg-white hover:text-[#44b584] text-base"}>login</Link>
