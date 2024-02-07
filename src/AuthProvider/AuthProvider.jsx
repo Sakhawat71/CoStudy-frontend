@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import axios from "axios";
 
 
 export const AuthContext = createContext(null);
@@ -21,7 +22,7 @@ const AuthProvider = ({ children }) => {
     // sign up => google
     const googleSignIn = () => {
         setLoading(true);
-        return signInWithPopup(auth,googleProvider);
+        return signInWithPopup(auth, googleProvider);
     }
 
     // log in => email password 
@@ -31,13 +32,24 @@ const AuthProvider = ({ children }) => {
     }
 
     // user managment
-    useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth, (currentUser)=>{
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setLoading(false);
+
+            if (currentUser) {
+                const loggedUserEmail = currentUser?.email;
+                axios.post(`https://online-group-study-server-gold.vercel.app/api/v1/auth/jwt`, { email: loggedUserEmail }, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data)
+                    })
+                    .catch(error => {
+                        console.error('Error sending JWT request:', error);
+                    });
+            }
         })
-        return ()=> unSubscribe();
-    },[])
+        return () => unSubscribe();
+    }, [])
 
     // log out
     const logout = () => {

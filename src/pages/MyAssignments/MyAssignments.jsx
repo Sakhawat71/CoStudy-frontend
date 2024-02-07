@@ -1,18 +1,28 @@
 import { useContext, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import MyAssgCard from "./MyAssgCard/MyAssgCard";
+import axios from "axios";
 
 const MyAssignments = () => {
 
     const { user } = useContext(AuthContext);
-    const assignments = useLoaderData();
+    const email = user?.email;
+    // const assignments = useLoaderData();
     const [myAssignments, setMyAssignments] = useState([])
 
-    useEffect(() => {
-        const onlyMy = assignments.filter(assg => assg.user === user?.email);
-        setMyAssignments(onlyMy)
-    }, [assignments, user?.email])
+    useEffect(()=>{
+        axios.get(`https://online-group-study-server-gold.vercel.app/api/v1/my-assignment?email=${email}`, {withCredentials: true})
+        .then(res => {
+            setMyAssignments(res.data)
+            console.log(res.data)
+        })
+    },[email])
+
+    // useEffect(() => {
+    //     const onlyMy = assignments.filter(assg => assg.user === user?.email);
+    //     setMyAssignments(onlyMy)
+    // }, [assignments, user?.email])
 
     // console.log(myAssignments)
 

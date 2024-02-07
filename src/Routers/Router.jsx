@@ -38,7 +38,7 @@ const router = createBrowserRouter([
             {
                 path: "/my-assignments",
                 element: <PrivetRouter><MyAssignments></MyAssignments></PrivetRouter>,
-                loader: ()=> fetch(`https://online-group-study-server-gold.vercel.app/api/v1/my-assignment`)
+                // loader: ()=> fetch(`https://online-group-study-server-gold.vercel.app/api/v1/my-assignment`)
             },
             {
                 path: "/create-assignment",
