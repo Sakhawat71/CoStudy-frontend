@@ -1,6 +1,10 @@
 # CoStudy - Client-Side
 
-live link : https://online-group-study-71.web.app/
+live link : 
+
+
+https://costudy.netlify.app/
+https://online-group-study-71.web.app/
 
 
 ## Overview
